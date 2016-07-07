@@ -16,6 +16,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
  */
 public class API {
     private static MainAPI mainAPI;
+    private static JuHeAPI juHeAPI;
     private static OkHttpClient okHttpClient;
     public static final Gson gson =  new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm").create();
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create(gson);
@@ -36,6 +37,23 @@ public class API {
             mainAPI = retrofit.create(MainAPI.class);
         }
         return mainAPI;
+
+    }
+
+    public static JuHeAPI juHeAPI(){
+        if(juHeAPI == null){
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.connectTimeout(25000, TimeUnit.MILLISECONDS);
+            okHttpClient = builder.build();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://v.juhe.cn/")
+                    .client(okHttpClient)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build();
+            juHeAPI = retrofit.create(JuHeAPI.class);
+        }
+        return juHeAPI;
 
     }
 

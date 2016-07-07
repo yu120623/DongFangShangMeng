@@ -5,5 +5,4 @@ package com.szdfc.dfsm.http;
  */
 public interface MainAPI {
 
-
 }
