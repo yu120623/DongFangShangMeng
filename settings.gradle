@@ -1,1 +1,1 @@
-include ':HeaderAndFooterRecyclerViewLibrary', ':app', ':baseandroid','entitylib'
+include ':HeaderAndFooterRecyclerViewLibrary','entitylib','app','baseandroid'
