@@ -107,6 +107,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     outRect.bottom = 2;
                 }
+
             }
         });
 
