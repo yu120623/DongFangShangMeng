@@ -1,1 +1,1 @@
-include ':app', ':baseandroid'
+include ':app', ':baseandroid', ':entitylib'
