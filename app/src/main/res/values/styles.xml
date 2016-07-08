@@ -1,3 +1,5 @@
 <resources>
-
+    <style name="DongFangTheme" parent="AppTheme">
+        <item name="android:listDivider">@drawable/list_divider</item>
+    </style>
 </resources>
