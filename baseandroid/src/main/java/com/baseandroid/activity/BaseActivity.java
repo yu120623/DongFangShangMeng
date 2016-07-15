@@ -42,7 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     TextView progressText;
     TextView failedText;
     TextView noDataText;
-    protected TextView actionBarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +71,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initActionBar() {
         setSupportActionBar(toolbar);
-        actionBarTitle = (TextView) this.findViewById(R.id.toolbar_title);
         toolbar.setTitle(getActionBarTitle());
         getSupportActionBar().setTitle(getActionBarTitle());
         toolbar.setTitleTextColor(Color.WHITE);

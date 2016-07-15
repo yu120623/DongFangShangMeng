@@ -35,7 +35,6 @@ public class FoodListActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        showBackBtn();
         initFoodList();
     }
 
@@ -73,12 +72,6 @@ public class FoodListActivity extends BaseActivity {
         @Override
         public FoodViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = inflater.inflate(R.layout.item_food, parent, false);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
             return new FoodViewHolder(view);
         }
 
@@ -90,6 +83,7 @@ public class FoodListActivity extends BaseActivity {
             holder.foodName.setText("北京烤鸭");
             holder.foodTag.setText("北京 烤鸭");
             holder.money.setText("￥280/人");
+
         }
 
         @Override
@@ -105,6 +99,6 @@ public class FoodListActivity extends BaseActivity {
 
     @Override
     public String getActionBarTitle() {
-        return "美食";
+        return "哈哈哈";
     }
 }

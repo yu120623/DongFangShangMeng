@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.baseandroid.util.CommonUtil;
  * Created by FreeMason on 2016/7/8.
  */
 public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
-    private GradientDrawable mDivider;
+    private Drawable mDivider;
     private Context context;
     private int height;
     public RecyclerViewDivider(Context context,int heightDP){
@@ -24,9 +23,8 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
     }
 
     public RecyclerViewDivider(Context context,int heightDP,int dividerDrawable){
-        mDivider = (GradientDrawable) ActivityCompat.getDrawable(context,dividerDrawable);
+        mDivider = ActivityCompat.getDrawable(context,dividerDrawable);
         this.height = heightDP;
-        mDivider.setSize(0,CommonUtil.dip2px(context, height));
         this.context = context;
     }
 

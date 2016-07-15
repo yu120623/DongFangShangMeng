@@ -2,15 +2,4 @@
     <style name="DongFangTheme" parent="AppTheme">
         <item name="android:listDivider">@drawable/list_divider</item>
     </style>
-
-    <style name="tabTourismStyle">
-        <item name="android:padding">@dimen/size_10dp</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textColor">@color/material_textBlack_secondaryText</item>
-        <item name="android:textSize">@dimen/size_16sp</item>
-        <item name="android:gravity">center</item>
-    </style>
-
 </resources>
