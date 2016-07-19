@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.baseandroid.activity.BaseActivity;
 import com.baseandroid.recyclerview.RecyclerViewDivider;
 import com.baseandroid.util.CommonUtil;
+import com.cundong.recyclerview.HeaderAndFooterRecyclerViewAdapter;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 
@@ -36,6 +37,14 @@ public class FoodListActivity extends BaseActivity {
     @Override
     protected void initViews() {
         initFoodList();
+        initFoodListHeader();
+    }
+
+    private void initFoodListHeader() {
+        View header = inflater.inflate(R.layout.header_food,null,false);
+        HeaderAndFooterRecyclerViewAdapter headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(foodAdapter);
+        headerAndFooterRecyclerViewAdapter.addHeaderView(header);
+        foodList.setAdapter(headerAndFooterRecyclerViewAdapter);
     }
 
     private void initFoodList() {
@@ -43,7 +52,6 @@ public class FoodListActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         foodList.setLayoutManager(linearLayoutManager);
         foodList.addItemDecoration(new RecyclerViewDivider(context,2));
-        foodList.setAdapter(foodAdapter);
     }
 
     class FoodViewHolder extends RecyclerView.ViewHolder {

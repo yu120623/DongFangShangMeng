@@ -1,24 +1,24 @@
 package com.szdfc.dfsm;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.baseandroid.activity.BaseActivity;
 import com.cundong.recyclerview.HeaderAndFooterRecyclerViewAdapter;
 import com.cundong.recyclerview.RecyclerViewUtils;
+import com.szdfc.dfsm.food.activity.FoodListActivity;
+import com.szdfc.dfsm.tourism.activity.TourismActivity;
+import com.szdfc.dfsm.weather.activity.WeatherActivity;
 
-import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,12 +129,14 @@ public class MainActivity extends BaseActivity {
         @Override
         public GridViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = inflater.inflate(R.layout.item_main, parent, false);
+            view.setOnClickListener(itemClick);
             return new GridViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(GridViewHolder holder, int position) {
-            holder.icon.setImageDrawable(getDrawable(iconID[position]));
+            holder.icon.setImageResource((iconID[position]));
+            holder.itemView.setTag(position);
             holder.title.setText(title[position]);
         }
 
@@ -156,6 +158,28 @@ public class MainActivity extends BaseActivity {
             ButterKnife.bind(this, itemView);
         }
     }
+
+    View.OnClickListener itemClick = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            int index = (int) v.getTag();
+            Intent intent = null;
+            switch (index){
+                case 0:
+                    intent = new Intent(context, WeatherActivity.class);
+                    break;
+                case 6:
+                    intent = new Intent(context, FoodListActivity.class);
+                    break;
+                case 7:
+                    intent = new Intent(context, TourismActivity.class);
+                    break;
+            }
+            if(intent != null){
+                startActivity(intent);
+            }
+        }
+    };
 
 
     @Override
