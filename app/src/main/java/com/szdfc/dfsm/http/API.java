@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.http;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,6 +28,7 @@ public class API {
         if(mainAPI == null){
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             builder.connectTimeout(25000, TimeUnit.MILLISECONDS);
+            builder.addNetworkInterceptor(new StethoInterceptor());
             okHttpClient = builder.build();
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("http://www.yqt360.com/")
