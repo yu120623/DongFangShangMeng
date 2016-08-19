@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="skyBlue">#49a5e8</color>
+    <color name="skyBlue">#29b6f6</color>
 
     <color name="textColor_black">#000000</color>
     <color name="line">#ececec</color>
@@ -18,7 +18,7 @@
 
     <color name="tableLineBg">#c1c1c1</color>
 
-    <color name="action_bar_bg">#2e2e2e</color>
+    <color name="action_bar_bg">#29b6f6</color>
 
     <!-- google 官方颜色 -->
 

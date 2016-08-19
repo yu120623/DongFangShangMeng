@@ -17,6 +17,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
  */
 public class API {
     private static MainAPI mainAPI;
+    private static JuHeAPI juHeWeatherAPI;
     private static JuHeAPI juHeAPI;
     private static OkHttpClient okHttpClient;
     public static final Gson gson =  new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm").create();
@@ -31,7 +32,7 @@ public class API {
             builder.addNetworkInterceptor(new StethoInterceptor());
             okHttpClient = builder.build();
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://www.yqt360.com/")
+                    .baseUrl("http://123.206.201.17:8080/szdfc-api/")
                     .client(okHttpClient)
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
@@ -42,8 +43,8 @@ public class API {
 
     }
 
-    public static JuHeAPI juHeAPI(){
-        if(juHeAPI == null){
+    public static JuHeAPI juHeWeatherAPI(){
+        if(juHeWeatherAPI == null){
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             builder.connectTimeout(25000, TimeUnit.MILLISECONDS);
             okHttpClient = builder.build();
@@ -53,11 +54,29 @@ public class API {
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .build();
+            juHeWeatherAPI = retrofit.create(JuHeAPI.class);
+        }
+        return juHeWeatherAPI;
+
+    }
+
+    public static JuHeAPI juHeAPI(){
+        if(juHeAPI == null){
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.connectTimeout(25000, TimeUnit.MILLISECONDS);
+            okHttpClient = builder.build();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://apis.juhe.cn/")
+                    .client(okHttpClient)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build();
             juHeAPI = retrofit.create(JuHeAPI.class);
         }
         return juHeAPI;
 
     }
+
 
 
 }

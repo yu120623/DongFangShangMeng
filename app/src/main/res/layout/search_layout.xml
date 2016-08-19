@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/search_edit_addr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/search"
+        android:layout_toStartOf="@+id/search"
+        android:background="@drawable/login_border"
+        android:ellipsize="end"
+        android:hint="输入位置"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:textColor="@color/textColor_black"
+        android:textColorHint="@color/material_grey_400" />
+
+    <TextView
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="搜索"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+    <!--<ImageView-->
+    <!--android:id="@+id/search"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:paddingRight="@dimen/size_10dp"-->
+    <!--android:src="@mipmap/sousuo"-->
+    <!--android:textColor="@color/white" />-->
+</RelativeLayout>

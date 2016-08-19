@@ -1,37 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:layout_marginTop="8dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:background="@drawable/exhibition_bg"
+    android:background="@color/material_white"
+    android:elevation="4dp"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/exhibition_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/material_grey_200" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="5dp">
 
-        <ImageView
-            android:id="@+id/exhibition_bg"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/jubanshijian"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:src="@mipmap/bg" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon01" />
+
+            <TextView
+                android:id="@+id/s_e_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/material_black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/baoming_btn"
+            android:layout_toRightOf="@+id/jubanshijian"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon01" />
+
+            <TextView
+                android:id="@+id/exh_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/material_black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/exhibition_title"
-            android:layout_width="match_parent"
+            android:id="@+id/baoming_btn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#40000000"
-            android:paddingBottom="5dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="5dp"
-            android:text="创业分享活动报名"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/exhibition_bg"
+            android:text="报名中"
+            android:textColor="@color/material_white"
+            android:textSize="14sp" />
     </RelativeLayout>
+    <!--android:background="@drawable/exhibition_bg"-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/exhibition_bg"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="180dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:adjustViewBounds="true"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/exhibition_title"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:background="#40000000"-->
+    <!--android:paddingBottom="5dp"-->
+    <!--android:paddingLeft="15dp"-->
+    <!--android:paddingTop="5dp"-->
+    <!--android:text="创业分享活动报名"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="16sp" />-->
+    <!--</RelativeLayout>-->
 
 
 </LinearLayout>

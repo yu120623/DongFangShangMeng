@@ -5,9 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_list"
+    <com.baseandroid.view.HackyViewPager
+        android:id="@+id/content_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/material_grey_400"></android.support.v7.widget.RecyclerView>
+        android:layout_above="@+id/btn_layout"></com.baseandroid.view.HackyViewPager>
+
+    <include
+        android:id="@+id/btn_layout"
+        layout="@layout/home_bottom_btn_layout"></include>
+
+
 </RelativeLayout>

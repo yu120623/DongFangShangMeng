@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_grey_100"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/last_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="前一天"
+            android:textColor="@color/skyBlue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/next_day"
+            android:layout_toRightOf="@+id/last_day"
+            android:gravity="center"
+            android:text="6月26日 星期日"
+            android:textColor="@color/skyBlue" />
+
+        <TextView
+            android:id="@+id/next_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="后一天"
+            android:textColor="@color/skyBlue" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/result_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

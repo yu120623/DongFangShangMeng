@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.szdfc.dfsm">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.szdfc.dfsm">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -18,10 +19,27 @@
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <application android:name=".AppApplication" android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
-        android:supportsRtl="true" android:theme="@style/DongFangTheme">
-        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:name=".AppApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/DongFangTheme">
+        <activity
+            android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,6 +49,37 @@
         <activity android:name=".food.activity.FoodListActivity" />
         <activity android:name=".weather.activity.WeatherActivity" />
         <activity android:name=".tourism.activity.TourismActivity" />
+        <activity android:name=".travel.TravelActivity" />
+        <activity android:name=".exhibition.ExhibitionActivity" />
+        <activity android:name=".exhibition.ExhDetailActivity" />
+        <activity android:name=".travel.ResultActivity" />
+        <activity android:name=".gps.NaviActivity" />
+        <activity android:name=".gps.SetAddrActivity" />
+        <activity android:name=".thinktank.ThinkTankActivity" />
+        <activity android:name=".thinktank.ThinkDetailActivity" />
+        <activity android:name=".news.NewsActivity" />
+        <activity android:name=".studytour.StudyTourActivity" />
+        <activity android:name=".businessschool.BusinessSchoolActivity" />
+        <activity android:name=".action.ActionsActivity" />
+        <activity android:name=".thirdparty.ThirdPartyActivity" />
+        <activity android:name=".businesscentre.BusinessCentreActivity" />
+        <activity
+            android:name=".travel.TrainStationActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".hotel.HotelActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".travel.PlanCityActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!--高德key-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="913f239ef0a61cef911f3e2f177165e8"></meta-data>
+
+        <!--定位service-->
+        <service android:name="com.amap.api.location.APSService"></service>
     </application>
 
 </manifest>

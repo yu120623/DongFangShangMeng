@@ -13,6 +13,16 @@
         android:adjustViewBounds="true"
         android:scaleType="fitCenter" />
 
+    <ImageView
+        android:id="@+id/add_btn_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+
     <TextView
         android:id="@+id/button_text"
         android:layout_width="wrap_content"
@@ -21,9 +31,9 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:visibility="gone"
         android:id="@+id/tip"
-        android:layout_alignRight="@+id/button_img"
         android:layout_width="@dimen/size_8dp"
-        android:layout_height="@dimen/size_8dp"/>
+        android:layout_height="@dimen/size_8dp"
+        android:layout_alignRight="@+id/button_img"
+        android:visibility="gone" />
 </RelativeLayout>

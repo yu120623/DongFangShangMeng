@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="BottomButton">
         <attr name="buttonImg" format="reference" />
+        <attr name="addButtonImg" format="reference" />
         <attr name="buttonTextColor" format="reference" />
         <attr name="buttonText" format="string" />
     </declare-styleable>

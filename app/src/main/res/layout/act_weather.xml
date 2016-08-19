@@ -16,16 +16,16 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/sk_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="11°"
             android:textColor="@color/white"
             android:textSize="50sp" />
 
         <TextView
+            android:id="@+id/today_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="多云"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

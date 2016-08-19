@@ -1,11 +1,11 @@
-package com.szdfc.dfsm;
+package com.szdfc.dfsm.thinktank;
 
 import com.baseandroid.activity.BaseActivity;
 
 /**
- * Created by HGo on 2016/7/13.
+ * Created by HGo on 2016/8/12.
  */
-public class BusActivity extends BaseActivity {
+public class ThinkDetailActivity extends BaseActivity {
     @Override
     protected void initViews() {
         showBackBtn();
@@ -14,11 +14,11 @@ public class BusActivity extends BaseActivity {
 
     @Override
     public int getContent() {
-        return R.layout.act_bus;
+        return 0;
     }
 
     @Override
     public String getActionBarTitle() {
-        return "大巴直通车";
+        return "智库详情";
     }
 }

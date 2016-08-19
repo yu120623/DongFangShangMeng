@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"><!-- android:shape="" 表示是圆角矩形还是椭圆等等 -->
-    <solid android:color="@color/white" />
+    <solid android:color="@color/skyBlue" />
     <!-- 背景颜色 -->
 
     <!-- padding 表示内部空间距离背景图片内部边距 的距离 -->
     <padding
-        android:bottom="10dp"
+        android:bottom="3dp"
         android:left="10dp"
         android:right="10dp"
-        android:top="10dp" />
-    <corners android:radius="5dp" />
+        android:top="3dp" />
+    <corners android:radius="3dp" />
 </shape>

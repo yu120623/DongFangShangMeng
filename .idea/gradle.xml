@@ -16,6 +16,15 @@
             <option value="$PROJECT_DIR$/entitylib" />
           </set>
         </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/HeaderAndFooterRecyclerViewLibrary" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/baseandroid" />
+            <option value="$PROJECT_DIR$/entitylib" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>

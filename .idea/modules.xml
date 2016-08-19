@@ -4,10 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DongFangShangMeng.iml" filepath="$PROJECT_DIR$/DongFangShangMeng.iml" />
       <module fileurl="file://$PROJECT_DIR$/HeaderAndFooterRecyclerViewLibrary/HeaderAndFooterRecyclerViewLibrary.iml" filepath="$PROJECT_DIR$/HeaderAndFooterRecyclerViewLibrary/HeaderAndFooterRecyclerViewLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HeaderAndFooterRecyclerViewLibrary/HeaderAndFooterRecyclerViewLibrary.iml" filepath="$PROJECT_DIR$/HeaderAndFooterRecyclerViewLibrary/HeaderAndFooterRecyclerViewLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseandroid/baseandroid.iml" filepath="$PROJECT_DIR$/baseandroid/baseandroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/entitylib/entitylib.iml" filepath="$PROJECT_DIR$/entitylib/entitylib.iml" />
       <module fileurl="file://$PROJECT_DIR$/entitylib/entitylib.iml" filepath="$PROJECT_DIR$/entitylib/entitylib.iml" />
     </modules>
   </component>

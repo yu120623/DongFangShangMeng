@@ -13,7 +13,7 @@
         android:paddingTop="50dp">
 
         <LinearLayout
-            android:id="@+id/bus_start"
+            android:id="@+id/from_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -26,24 +26,25 @@
                 android:textColor="@color/material_grey_500" />
 
             <TextView
+                android:id="@+id/from_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="苏州"
                 android:textColor="@color/material_black"
                 android:textSize="22sp" />
-
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/travel_img"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginTop="5dp"
-            android:layout_toLeftOf="@+id/bus_end"
-            android:layout_toRightOf="@+id/bus_start"
+            android:layout_toLeftOf="@+id/to_btn"
+            android:layout_toRightOf="@+id/from_btn"
             android:src="@mipmap/bus" />
 
         <LinearLayout
-            android:id="@+id/bus_end"
+            android:id="@+id/to_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -57,6 +58,7 @@
                 android:textColor="@color/material_grey_500" />
 
             <TextView
+                android:id="@+id/to_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="上海"
@@ -74,24 +76,29 @@
         android:background="@color/line" />
 
     <RelativeLayout
+        android:id="@+id/select_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp">
+        android:padding="30dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/bus_date_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginRight="30dp"
             android:src="@mipmap/time" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/bus_date_icon"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/go_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2016-03-15"
@@ -104,13 +111,13 @@
                 android:text="到达城市"
                 android:textColor="@color/material_grey_500"
                 android:textSize="16sp" />
-
         </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:src="@mipmap/more" />
 
     </RelativeLayout>
@@ -120,57 +127,8 @@
         android:layout_height="1px"
         android:background="@color/line" />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="30dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:src="@mipmap/time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="商务/特等/一等/二等"
-            android:textColor="@color/material_black"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/line" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="30dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:src="@mipmap/time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="经济仓"
-            android:textColor="@color/material_black"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-
     <Button
+        android:id="@+id/search_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
