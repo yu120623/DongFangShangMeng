@@ -1,5 +1,6 @@
 package com.szdfc.entitylib;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,15 +38,15 @@ public class NewsEntity {
 
     public static class ResultBean {
         private String createdBy;
-        private long createdTime;
+        private Date createdTime;
         private String updatedBy;
-        private long updatedTime;
+        private Date updatedTime;
 
         private int nid;
         private String ntitle;
         private String neditor;
         private String ndesc;
-        private long ntimePublish;
+        private Date ntimePublish;
         private String ncontent;
 
         private ResourceEntity resourceEntity;
@@ -58,11 +59,11 @@ public class NewsEntity {
             this.createdBy = createdBy;
         }
 
-        public long getCreatedTime() {
+        public Date getCreatedTime() {
             return createdTime;
         }
 
-        public void setCreatedTime(long createdTime) {
+        public void setCreatedTime(Date createdTime) {
             this.createdTime = createdTime;
         }
 
@@ -74,11 +75,11 @@ public class NewsEntity {
             this.updatedBy = updatedBy;
         }
 
-        public long getUpdatedTime() {
+        public Date getUpdatedTime() {
             return updatedTime;
         }
 
-        public void setUpdatedTime(long updatedTime) {
+        public void setUpdatedTime(Date updatedTime) {
             this.updatedTime = updatedTime;
         }
 
@@ -114,11 +115,11 @@ public class NewsEntity {
             this.ndesc = ndesc;
         }
 
-        public long getNtimePublish() {
+        public Date getNtimePublish() {
             return ntimePublish;
         }
 
-        public void setNtimePublish(long ntimePublish) {
+        public void setNtimePublish(Date ntimePublish) {
             this.ntimePublish = ntimePublish;
         }
 

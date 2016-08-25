@@ -1,14 +1,16 @@
-package com.szdfc.dfsm.thinktank;
+package com.szdfc.dfsm.news;
 
 import android.os.Bundle;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baseandroid.activity.BaseActivity;
 import com.baseandroid.util.CommonUtil;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.ThinkDetailEntity;
+import com.szdfc.entitylib.NewsDetailEntity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,11 +20,12 @@ import rx.functions.Action0;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by HGo on 2016/8/12.
+ * Created by FreeMason on 2016/8/25.
  */
-public class ThinkDetailActivity extends BaseActivity {
-    @Bind(R.id.think_title)
-    TextView thinkTitle;
+public class NewsDetailActivity extends BaseActivity {
+
+    @Bind(R.id.news_title)
+    TextView newsTitle;
     @Bind(R.id.web_view)
     WebView webView;
 
@@ -30,7 +33,7 @@ public class ThinkDetailActivity extends BaseActivity {
     protected void initViews() {
         showBackBtn();
         String id = this.getIntent().getStringExtra("id");
-        API.getMainAPI().thinkTankFindOne(id)
+        API.getMainAPI().newsFindOne(id)
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
@@ -39,7 +42,7 @@ public class ThinkDetailActivity extends BaseActivity {
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ThinkDetailEntity>() {
+                .subscribe(new Subscriber<NewsDetailEntity>() {
                     @Override
                     public void onCompleted() {
 
@@ -51,26 +54,26 @@ public class ThinkDetailActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(ThinkDetailEntity thinkDetailEntity) {
-                        show(thinkDetailEntity);
+                    public void onNext(NewsDetailEntity newsDetailEntity) {
+                        show(newsDetailEntity);
                     }
                 });
     }
 
-    private void show(ThinkDetailEntity thinkDetailEntity) {
+    private void show(NewsDetailEntity newsDetailEntity) {
         hideProgressStatusLayout();
-        thinkTitle.setText(thinkDetailEntity.getResult().getTname());
-        webView.loadData(CommonUtil.getHtmlData(thinkDetailEntity.getResult().getTintro()), "text/html; charset=utf-8", "utf-8");
+        newsTitle.setText(newsDetailEntity.getResult().getNtitle());
+        webView.loadData(CommonUtil.getHtmlData(newsDetailEntity.getResult().getNcontent()), "text/html; charset=utf-8", "utf-8");
     }
 
     @Override
     public int getContent() {
-        return R.layout.act_think_detail;
+        return R.layout.act_news_detail;
     }
 
     @Override
     public String getActionBarTitle() {
-        return "智库详情";
+        return "新闻详细";
     }
 
 }

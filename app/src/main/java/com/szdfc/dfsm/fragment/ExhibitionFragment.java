@@ -40,14 +40,11 @@ public class ExhibitionFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-
         adapter = new ExhibitionAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
         loadDataFromServer();
-
     }
 
     private void loadDataFromServer() {

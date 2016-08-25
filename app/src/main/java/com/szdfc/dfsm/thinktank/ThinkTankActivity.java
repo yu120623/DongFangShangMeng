@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.thinktank;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -34,7 +35,6 @@ public class ThinkTankActivity extends BaseActivity {
     @Override
     protected void initViews() {
         showBackBtn();
-
         adapter = new ExhibitionAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
@@ -72,13 +72,23 @@ public class ThinkTankActivity extends BaseActivity {
 
         @Override
         public ExhibitionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = inflater.inflate(R.layout.item_exhibition, parent, false);
+            View view = inflater.inflate(R.layout.item_think, parent, false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,ThinkDetailActivity.class);
+                    intent.putExtra("id",(String)view.getTag());
+                    startActivity(intent);
+                }
+            });
             return new ExhibitionViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(ExhibitionViewHolder holder, int position) {
             ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.bg);
+            holder.thinkTitle.setText(resultData.get(position).getTname());
+            holder.itemView.setTag(resultData.get(position).getTid()+"");
         }
 
         @Override
@@ -90,7 +100,8 @@ public class ThinkTankActivity extends BaseActivity {
     class ExhibitionViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.exhibition_bg)
         ImageView bg;
-
+        @Bind(R.id.think_title)
+        TextView thinkTitle;
         public ExhibitionViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

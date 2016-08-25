@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.businessschool;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
 import com.szdfc.entitylib.BusinessSchoolEneity;
+import com.szdfc.entitylib.BussinessSchoolDetailEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +35,9 @@ public class BusinessSchoolActivity extends BaseActivity {
     @Override
     protected void initViews() {
         showBackBtn();
-
         adapter = new BusinessSchoolAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
-
         loadDataFromServer();
     }
 
@@ -70,6 +70,14 @@ public class BusinessSchoolActivity extends BaseActivity {
         @Override
         public BusinessSchoolViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = inflater.inflate(R.layout.item_studyour, parent, false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, BusinessSchoolDetailActivity.class);
+                    intent.putExtra("id",(String) view.getTag());
+                    startActivity(intent);
+                }
+            });
             return new BusinessSchoolViewHolder(view);
         }
 
@@ -78,6 +86,7 @@ public class BusinessSchoolActivity extends BaseActivity {
             ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
             holder.title.setText(resultData.get(position).getBdesc());
             holder.desc.setText(resultData.get(position).getBshare());
+            holder.itemView.setTag(resultData.get(position).getBid()+"");
         }
 
         @Override

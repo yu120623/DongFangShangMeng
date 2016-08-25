@@ -1,12 +1,17 @@
 package com.szdfc.dfsm.http;
 
+import com.szdfc.entitylib.ActionDetailEntity;
 import com.szdfc.entitylib.ActionEntity;
 import com.szdfc.entitylib.BusinessCentreEntity;
 import com.szdfc.entitylib.BusinessSchoolEneity;
+import com.szdfc.entitylib.BussinessSchoolDetailEntity;
 import com.szdfc.entitylib.ExhDetailEntity;
 import com.szdfc.entitylib.ExhibitionEntity;
+import com.szdfc.entitylib.NewsDetailEntity;
 import com.szdfc.entitylib.NewsEntity;
+import com.szdfc.entitylib.StudyTourDetailEntity;
 import com.szdfc.entitylib.StudyTourEntity;
+import com.szdfc.entitylib.ThinkDetailEntity;
 import com.szdfc.entitylib.ThinkTankEntity;
 import com.szdfc.entitylib.ThirdPartyEntity;
 
@@ -59,5 +64,23 @@ public interface MainAPI {
     @GET("api/businessCentreList")
     Observable<BusinessCentreEntity> getBusinessCentreList(@Query("pagerNumber") int pagerNumber);
 
+    //游学详细
+    @GET("api/studyTourFindOne")
+    Observable<StudyTourDetailEntity> studyTourFindOne(@Query("sId") String id);
 
+    //智库详细
+    @GET("api/thinkTankFindOne")
+    Observable<ThinkDetailEntity> thinkTankFindOne(@Query("tId") String id);
+
+    //新闻详细
+    @GET("api/newsFindOne")
+    Observable<NewsDetailEntity> newsFindOne(@Query("nId") String id);
+
+    //活动详细
+    @GET("api/actFindOne")
+    Observable<ActionDetailEntity> actFindOne(@Query("conId") String id);
+
+    //商学院详细
+    @GET("api/businessSchoolFindOne")
+    Observable<BussinessSchoolDetailEntity> businessSchoolFindOne(@Query("bId") String id);
 }

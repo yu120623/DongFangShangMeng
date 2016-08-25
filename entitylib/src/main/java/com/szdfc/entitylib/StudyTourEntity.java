@@ -1,5 +1,6 @@
 package com.szdfc.entitylib;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,9 +38,9 @@ public class StudyTourEntity {
 
     public static class ResultBean {
         private String createdBy;
-        private long createdTime;
+        private Date createdTime;
         private String updatedBy;
-        private long updatedTime;
+        private Date updatedTime;
 
         private String sdesc;
         private String sname;
@@ -56,11 +57,11 @@ public class StudyTourEntity {
             this.createdBy = createdBy;
         }
 
-        public long getCreatedTime() {
+        public Date getCreatedTime() {
             return createdTime;
         }
 
-        public void setCreatedTime(long createdTime) {
+        public void setCreatedTime(Date createdTime) {
             this.createdTime = createdTime;
         }
 
@@ -72,11 +73,11 @@ public class StudyTourEntity {
             this.updatedBy = updatedBy;
         }
 
-        public long getUpdatedTime() {
+        public Date getUpdatedTime() {
             return updatedTime;
         }
 
-        public void setUpdatedTime(long updatedTime) {
+        public void setUpdatedTime(Date updatedTime) {
             this.updatedTime = updatedTime;
         }
 

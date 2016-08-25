@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.action;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -65,8 +66,6 @@ public class ActionsActivity extends BaseActivity {
                     public void onNext(ActionEntity actionEntity) {
                         resultData = actionEntity.getResult();
                     }
-
-
                 });
 
     }
@@ -75,6 +74,14 @@ public class ActionsActivity extends BaseActivity {
         @Override
         public ActionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = inflater.inflate(R.layout.item_action, parent, false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,ActionsDetailActivity.class);
+                    intent.putExtra("id",(String) view.getTag());
+                    startActivity(intent);
+                }
+            });
             return new ActionViewHolder(view);
         }
 
@@ -86,6 +93,7 @@ public class ActionsActivity extends BaseActivity {
             String sDate = new SimpleDateFormat("M月dd日").format(new Date(resultData.get(position).getStartTime()));
             String eDate = new SimpleDateFormat("M月dd日").format(new Date(resultData.get(position).getEndTime()));
             holder.date.setText(sDate + "-" + eDate);
+            holder.itemView.setTag(resultData.get(position).getConId()+"");
         }
 
         @Override

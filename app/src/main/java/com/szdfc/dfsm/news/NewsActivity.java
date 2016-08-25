@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.news;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,12 +10,14 @@ import android.widget.TextView;
 
 import com.baseandroid.activity.BaseActivity;
 import com.baseandroid.recyclerview.RecyclerViewDivider;
+import com.baseandroid.util.ImagesOptionUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
 import com.szdfc.entitylib.NewsEntity;
 import com.szdfc.entitylib.ThinkTankEntity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +38,7 @@ public class NewsActivity extends BaseActivity {
     NewsAdapter adapter;
 
     private List<NewsEntity.ResultBean> resultData = new ArrayList<>();
+    private SimpleDateFormat simpleDateFormat;
 
 
     @Override
@@ -45,7 +49,7 @@ public class NewsActivity extends BaseActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new RecyclerViewDivider(context, 1));
         recyclerView.setAdapter(adapter);
-
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         loadDataFromServer();
 
     }
@@ -78,14 +82,24 @@ public class NewsActivity extends BaseActivity {
         @Override
         public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = inflater.inflate(R.layout.item_news, parent, false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,NewsDetailActivity.class);
+                    intent.putExtra("id",(String) view.getTag());
+                    startActivity(intent);
+
+                }
+            });
             return new NewsViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(NewsViewHolder holder, int position) {
             holder.newsTitle.setText(resultData.get(position).getNtitle());
-            holder.newDate.setText(resultData.get(position).getNtimePublish() + "");
-            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.newsPic);
+            holder.newDate.setText(simpleDateFormat.format(resultData.get(position).getNtimePublish()));
+            holder.itemView.setTag(resultData.get(position).getNid()+"");
+            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.newsPic, ImagesOptionUtil.getDefaultOptions());
         }
 
         @Override

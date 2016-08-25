@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.studytour;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baseandroid.activity.BaseActivity;
+import com.baseandroid.util.ImagesOptionUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
@@ -63,8 +65,6 @@ public class StudyTourActivity extends BaseActivity {
                         resultData = studyTourEntity.getResult();
 
                     }
-
-
                 });
 
     }
@@ -73,14 +73,24 @@ public class StudyTourActivity extends BaseActivity {
         @Override
         public StudyTourViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = inflater.inflate(R.layout.item_studyour, parent, false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    StudyTourEntity.ResultBean resultBean = (StudyTourEntity.ResultBean) view.getTag();
+                    Intent intent = new Intent(context,StudyTourDetailActivity.class);
+                    intent.putExtra("id",resultBean.getSid()+"");
+                    startActivity(intent);
+                }
+            });
             return new StudyTourViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(StudyTourViewHolder holder, int position) {
-            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
+            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img, ImagesOptionUtil.getDefaultOptions());
             holder.title.setText(resultData.get(position).getSname());
             holder.desc.setText(resultData.get(position).getSdesc());
+            holder.itemView.setTag(resultData.get(position));
         }
 
         @Override

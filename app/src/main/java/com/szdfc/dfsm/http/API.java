@@ -1,9 +1,11 @@
 package com.szdfc.dfsm.http;
 
+import com.baseandroid.util.DateAdapter;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -20,7 +22,7 @@ public class API {
     private static JuHeAPI juHeWeatherAPI;
     private static JuHeAPI juHeAPI;
     private static OkHttpClient okHttpClient;
-    public static final Gson gson =  new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm").create();
+    public static final Gson gson =  new GsonBuilder().registerTypeAdapter(Date.class,new DateAdapter()).create();
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create(gson);
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
 

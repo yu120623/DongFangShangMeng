@@ -30,15 +30,17 @@
                 android:layout_height="wrap_content"
                 android:text="标题要常长长长长长长长长长长长长长长长长长"
                 android:textColor="@color/material_black"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
+                android:layout_marginTop="@dimen/size_10dp"
                 android:id="@+id/news_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/news_title"
                 android:text="2015-12-22"
+                android:textSize="@dimen/size_12sp"
                 android:textColor="@color/material_black" />
 
         </RelativeLayout>
