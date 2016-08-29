@@ -1,11 +1,9 @@
 package com.szdfc.dfsm.exhibition;
 
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baseandroid.activity.BaseActivity;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
 import com.szdfc.entitylib.ExhDetailEntity;

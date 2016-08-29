@@ -22,6 +22,8 @@ import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.action.ActionsActivity;
 import com.szdfc.dfsm.businesscentre.BusinessCentreActivity;
 import com.szdfc.dfsm.businessschool.BusinessSchoolActivity;
+import com.szdfc.dfsm.competition.CompetitionActivity;
+import com.szdfc.dfsm.fashioncentre.FashionCentreActivity;
 import com.szdfc.dfsm.studytour.StudyTourActivity;
 import com.szdfc.dfsm.thinktank.ThinkTankActivity;
 import com.szdfc.dfsm.food.activity.FoodListActivity;
@@ -232,6 +234,7 @@ public class HomeFragment extends BaseFragment {
                     intent = new Intent(context, StudyTourActivity.class);
                     break;
                 case 8:
+                    intent = new Intent(context, FashionCentreActivity.class);
                     break;
                 case 9:
                     intent = new Intent(context, ThinkTankActivity.class);
@@ -250,6 +253,9 @@ public class HomeFragment extends BaseFragment {
                     break;
                 case 14:
                     intent = new Intent(context, ActionsActivity.class);
+                    break;
+                case 15:
+                    intent = new Intent(context, CompetitionActivity.class);
                     break;
             }
             if (intent != null) {

@@ -14,8 +14,8 @@ import com.baseandroid.util.ImagesOptionUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.NewsEntity;
-import com.szdfc.entitylib.ThinkTankEntity;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class NewsActivity extends BaseActivity {
 
     NewsAdapter adapter;
 
-    private List<NewsEntity.ResultBean> resultData = new ArrayList<>();
+    private List<ResultBean> resultData = new ArrayList<>();
     private SimpleDateFormat simpleDateFormat;
 
 
@@ -55,10 +55,10 @@ public class NewsActivity extends BaseActivity {
     }
 
     private void loadDataFromServer() {
-        API.getMainAPI().getNews(0)
+        API.getMainAPI().getNewsList(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<NewsEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
 
                     @Override
                     public void onCompleted() {
@@ -71,8 +71,8 @@ public class NewsActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(NewsEntity newsEntity) {
-                        resultData = newsEntity.getResult();
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
                 });
     }

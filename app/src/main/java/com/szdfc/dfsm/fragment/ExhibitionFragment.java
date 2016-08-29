@@ -13,11 +13,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.exhibition.ExhDetailActivity;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.ExhibitionEntity;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
@@ -36,7 +35,7 @@ public class ExhibitionFragment extends BaseFragment {
 
     ExhibitionAdapter adapter;
 
-    private List<ExhibitionEntity.ResultBean> resultData = new ArrayList<>();
+    private List<ResultBean> resultData = new ArrayList<>();
 
     @Override
     protected void initViews() {
@@ -51,7 +50,7 @@ public class ExhibitionFragment extends BaseFragment {
         API.getMainAPI().getExhibition(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ExhibitionEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
                     @Override
                     public void onCompleted() {
                         adapter.notifyDataSetChanged();
@@ -63,9 +62,11 @@ public class ExhibitionFragment extends BaseFragment {
                     }
 
                     @Override
-                    public void onNext(ExhibitionEntity exhibitionEntity) {
-                        resultData = exhibitionEntity.getResult();
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
+
+
                 });
 
     }
@@ -81,11 +82,12 @@ public class ExhibitionFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(ExhibitionViewHolder holder, int position) {
-            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.bg);
-            String sDate = new SimpleDateFormat("M月dd日").format(new Date(resultData.get(position).getEstartDate()));
-            String eDate = new SimpleDateFormat("M月dd日").format(new Date(resultData.get(position).getEendDate()));
-            holder.date.setText(sDate + "-" + eDate);
-            holder.addr.setText(resultData.get(position).getEaddress());
+            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
+//            String sDate = new SimpleDateFormat("M月dd日").format(new Date(resultData.get(position).getEstartDate()));
+//            String eDate = new SimpleDateFormat("M月dd日").format(new Date(resultData.get(position).getEendDate()));
+//            holder.date.setText(sDate + "-" + eDate);
+//            holder.addr.setText(resultData.get(position).getEaddress());
+            holder.title.setText(resultData.get(position).getEtitle());
 
             holder.itemView.setTag(position);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -108,14 +110,19 @@ public class ExhibitionFragment extends BaseFragment {
     }
 
     class ExhibitionViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.exhibition_bg)
-        ImageView bg;
+        //        @Bind(R.id.exhibition_bg)
+//        ImageView bg;
+//
+//        @Bind(R.id.s_e_date)
+//        TextView date;
+//
+//        @Bind(R.id.exh_addr)
+//        TextView addr;
+        @Bind(R.id.exh_img)
+        ImageView img;
 
-        @Bind(R.id.s_e_date)
-        TextView date;
-
-        @Bind(R.id.exh_addr)
-        TextView addr;
+        @Bind(R.id.exh_title)
+        TextView title;
 
         public ExhibitionViewHolder(View itemView) {
             super(itemView);

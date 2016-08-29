@@ -11,7 +11,8 @@ import com.baseandroid.activity.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.BusinessCentreEntity;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class BusinessCentreActivity extends BaseActivity {
 
     BusinessCentreAdapter adapter;
 
-    List<BusinessCentreEntity.ResultBean> resultData = new ArrayList<>();
+    List<ResultBean> resultData = new ArrayList<>();
 
 
     @Override
@@ -49,7 +50,7 @@ public class BusinessCentreActivity extends BaseActivity {
         API.getMainAPI().getBusinessCentreList(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BusinessCentreEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
                     @Override
                     public void onCompleted() {
                         adapter.notifyDataSetChanged();
@@ -61,11 +62,9 @@ public class BusinessCentreActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(BusinessCentreEntity businessCentreEntity) {
-                        resultData = businessCentreEntity.getResult();
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
-
-
                 });
 
     }
@@ -81,6 +80,12 @@ public class BusinessCentreActivity extends BaseActivity {
         public void onBindViewHolder(BusinessCentreViewHolder holder, int position) {
             ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
             holder.title.setText(resultData.get(position).getBtitle());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
 
         @Override

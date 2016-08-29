@@ -12,7 +12,8 @@ import com.baseandroid.activity.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.ThinkTankEntity;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class ThinkTankActivity extends BaseActivity {
 
     ExhibitionAdapter adapter;
 
-    private List<ThinkTankEntity.ResultBean> resultData = new ArrayList<>();
+    private List<ResultBean> resultData = new ArrayList<>();
 
     @Override
     protected void initViews() {
@@ -45,10 +46,10 @@ public class ThinkTankActivity extends BaseActivity {
     }
 
     private void loadDataFromServer() {
-        API.getMainAPI().getThinkTank(0)
+        API.getMainAPI().getThinkTankList(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ThinkTankEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
                     @Override
                     public void onCompleted() {
                         adapter.notifyDataSetChanged();
@@ -60,8 +61,8 @@ public class ThinkTankActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(ThinkTankEntity thinkTankEntity) {
-                        resultData = thinkTankEntity.getResult();
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
                 });
 
@@ -72,7 +73,7 @@ public class ThinkTankActivity extends BaseActivity {
 
         @Override
         public ExhibitionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = inflater.inflate(R.layout.item_think, parent, false);
+            View view = inflater.inflate(R.layout.item_exhibition, parent, false);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -86,7 +87,7 @@ public class ThinkTankActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(ExhibitionViewHolder holder, int position) {
-            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.bg);
+            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
             holder.thinkTitle.setText(resultData.get(position).getTname());
             holder.itemView.setTag(resultData.get(position).getTid()+"");
         }
@@ -98,10 +99,12 @@ public class ThinkTankActivity extends BaseActivity {
     }
 
     class ExhibitionViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.exhibition_bg)
-        ImageView bg;
-        @Bind(R.id.think_title)
+        @Bind(R.id.exh_img)
+        ImageView img;
+        @Bind(R.id.exh_title)
         TextView thinkTitle;
+
+
         public ExhibitionViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

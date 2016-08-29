@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:buttonImg="@mipmap/btn02"
+            app:buttonImg="@drawable/home_btn"
             app:buttonText="主页"
             app:buttonTextColor="@color/bottom_btn_color" />
 
@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:buttonImg="@mipmap/btn02"
+            app:buttonImg="@drawable/exh_btn"
             app:buttonText="展会"
             app:buttonTextColor="@color/bottom_btn_color" />
 
@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:buttonImg="@mipmap/btn02"
+            app:buttonImg="@drawable/profile_btn"
             app:buttonText="会员"
             app:buttonTextColor="@color/bottom_btn_color" />
     </LinearLayout>

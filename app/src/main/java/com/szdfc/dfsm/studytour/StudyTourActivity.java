@@ -13,6 +13,8 @@ import com.baseandroid.util.ImagesOptionUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 import com.szdfc.entitylib.StudyTourEntity;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class StudyTourActivity extends BaseActivity {
     RecyclerView recyclerView;
 
     StudyTourAdapter adapter;
-    List<StudyTourEntity.ResultBean> resultData = new ArrayList<>();
+    List<ResultBean> resultData = new ArrayList<>();
 
     @Override
     protected void initViews() {
@@ -49,7 +51,7 @@ public class StudyTourActivity extends BaseActivity {
         API.getMainAPI().getStudyTourList(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<StudyTourEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
                     @Override
                     public void onCompleted() {
                         adapter.notifyDataSetChanged();
@@ -61,10 +63,10 @@ public class StudyTourActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(StudyTourEntity studyTourEntity) {
-                        resultData = studyTourEntity.getResult();
-
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
+
                 });
 
     }
@@ -76,7 +78,7 @@ public class StudyTourActivity extends BaseActivity {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    StudyTourEntity.ResultBean resultBean = (StudyTourEntity.ResultBean) view.getTag();
+                    ResultBean resultBean = (ResultBean) view.getTag();
                     Intent intent = new Intent(context,StudyTourDetailActivity.class);
                     intent.putExtra("id",resultBean.getSid()+"");
                     startActivity(intent);

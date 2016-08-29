@@ -7,13 +7,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baseandroid.activity.BaseActivity;
 import com.baseandroid.util.CommonUtil;
+import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
 import com.szdfc.entitylib.PlanEntity;
 import com.szdfc.entitylib.TrainEntity;
+
+import java.util.Calendar;
 
 import butterknife.Bind;
 import rx.Subscriber;
@@ -21,7 +25,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
-public class TravelActivity extends BaseActivity {
+public class TravelActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener {
     @Bind(R.id.from_btn)
     LinearLayout fromBtn;
     @Bind(R.id.from_text)
@@ -39,6 +43,11 @@ public class TravelActivity extends BaseActivity {
     ImageView img;
     @Bind(R.id.select_date)
     RelativeLayout selectDate;
+    @Bind(R.id.go_date)
+    TextView goDate;
+
+    public static final String DATEPICKER_TAG = "datepicker";
+
 
     String start = "";
     String end = "";
@@ -49,12 +58,24 @@ public class TravelActivity extends BaseActivity {
     @Override
     protected void initViews() {
         showBackBtn();
+        final Calendar calendar = Calendar.getInstance();
+        final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
+
         actIndex = getIntent().getIntExtra("index", 0);
         switch (actIndex) {
             case 1:
                 toolbar.setTitle("航班查询");
                 img.setImageResource(R.mipmap.plan);
                 selectDate.setVisibility(View.VISIBLE);
+                selectDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        datePickerDialog.setVibrate(true);
+                        datePickerDialog.setYearRange(1985, 2028);
+                        datePickerDialog.setCloseOnSingleTapDay(true);
+                        datePickerDialog.show(getSupportFragmentManager(), DATEPICKER_TAG);
+                    }
+                });
                 initBtn();
                 break;
             case 2:
@@ -241,4 +262,9 @@ public class TravelActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+        Toast.makeText(TravelActivity.this, "new date:" + year + "-" + month + "-" + day, Toast.LENGTH_LONG).show();
+        goDate.setText(year + "-" + month + "-" + day);
+    }
 }

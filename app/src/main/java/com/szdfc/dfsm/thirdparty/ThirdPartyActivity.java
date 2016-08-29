@@ -11,7 +11,8 @@ import com.baseandroid.activity.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.ThirdPartyEntity;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class ThirdPartyActivity extends BaseActivity {
 
     ThirdPartyAdapter adapter;
 
-    List<ThirdPartyEntity.ResultBean> resultData = new ArrayList<>();
+    List<ResultBean> resultData = new ArrayList<>();
 
     @Override
     protected void initViews() {
@@ -48,7 +49,7 @@ public class ThirdPartyActivity extends BaseActivity {
         API.getMainAPI().getThirdList(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ThirdPartyEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
                     @Override
                     public void onCompleted() {
                         adapter.notifyDataSetChanged();
@@ -60,8 +61,8 @@ public class ThirdPartyActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(ThirdPartyEntity thirdPartyEntity) {
-                        resultData = thirdPartyEntity.getResult();
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
                 });
 

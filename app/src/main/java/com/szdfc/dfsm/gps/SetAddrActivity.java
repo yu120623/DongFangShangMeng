@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.gps;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -61,9 +62,20 @@ public class SetAddrActivity extends BaseActivity implements Inputtips.Inputtips
         }
 
         @Override
-        public void onBindViewHolder(TipsViewHolder holder, int position) {
+        public void onBindViewHolder(TipsViewHolder holder, final int position) {
             holder.tipName.setText(tiplist.get(position).getName());
-            holder.tipName.setText(tiplist.get(position).getAddress());
+            holder.tipAddr.setText(tiplist.get(position).getAddress());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.putExtra("name", tiplist.get(position).getName());
+                    intent.putExtra("lat", tiplist.get(position).getPoint().getLatitude());
+                    intent.putExtra("lng", tiplist.get(position).getPoint().getLongitude());
+                    setResult(RESULT_OK, intent); //intent为A传来的带有Bundle的intent，当然也可以自己定义新的Bundle
+                    finish();
+                }
+            });
         }
 
         @Override

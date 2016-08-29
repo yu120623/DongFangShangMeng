@@ -1,14 +1,13 @@
-package com.szdfc.dfsm.businessschool;
+package com.szdfc.dfsm.competition;
 
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.baseandroid.activity.BaseActivity;
+import com.baseandroid.util.CommonUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
@@ -24,25 +23,27 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class BusinessSchoolActivity extends BaseActivity {
-
-    @Bind(R.id.businessschool_list)
+/**
+ * Created by HGo on 2016/8/23.
+ */
+public class CompetitionActivity extends BaseActivity {
+    @Bind(R.id.competition_list)
     RecyclerView recyclerView;
+    CompetitionAdapter adapter;
 
-    BusinessSchoolAdapter adapter;
     List<ResultBean> resultData = new ArrayList<>();
 
     @Override
     protected void initViews() {
         showBackBtn();
-        adapter = new BusinessSchoolAdapter();
+        adapter = new CompetitionAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
         loadDataFromServer();
     }
 
     private void loadDataFromServer() {
-        API.getMainAPI().getbSchoolList(0)
+        API.getMainAPI().getCompetitionList(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ResultListEntity>() {
@@ -64,27 +65,19 @@ public class BusinessSchoolActivity extends BaseActivity {
 
     }
 
-    class BusinessSchoolAdapter extends RecyclerView.Adapter<BusinessSchoolViewHolder> {
+
+    class CompetitionAdapter extends RecyclerView.Adapter<CompetitionViewHolder> {
         @Override
-        public BusinessSchoolViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = inflater.inflate(R.layout.item_studyour, parent, false);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, BusinessSchoolDetailActivity.class);
-                    intent.putExtra("id",(String) view.getTag());
-                    startActivity(intent);
-                }
-            });
-            return new BusinessSchoolViewHolder(view);
+        public CompetitionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = inflater.inflate(R.layout.item_competition, parent, false);
+            return new CompetitionViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(BusinessSchoolViewHolder holder, int position) {
-            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
-            holder.title.setText(resultData.get(position).getBdesc());
-            holder.desc.setText(resultData.get(position).getBshare());
-            holder.itemView.setTag(resultData.get(position).getBid()+"");
+        public void onBindViewHolder(CompetitionViewHolder holder, int position) {
+            if (resultData.get(position).getResourceEntity() != null)
+                ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
+
         }
 
         @Override
@@ -93,15 +86,11 @@ public class BusinessSchoolActivity extends BaseActivity {
         }
     }
 
-    class BusinessSchoolViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.sty_img)
+    class CompetitionViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.competition_img)
         ImageView img;
-        @Bind(R.id.sty_title)
-        TextView title;
-        @Bind(R.id.sty_desc)
-        TextView desc;
 
-        public BusinessSchoolViewHolder(View itemView) {
+        public CompetitionViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -109,11 +98,11 @@ public class BusinessSchoolActivity extends BaseActivity {
 
     @Override
     public int getContent() {
-        return R.layout.act_businessschool;
+        return R.layout.act_competition;
     }
 
     @Override
     public String getActionBarTitle() {
-        return "商学院";
+        return "创业大赛";
     }
 }

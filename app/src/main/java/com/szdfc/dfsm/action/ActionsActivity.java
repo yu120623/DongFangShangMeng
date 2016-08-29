@@ -12,7 +12,8 @@ import com.baseandroid.activity.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.ActionEntity;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ActionsActivity extends BaseActivity {
 
     ActionAdapter adapter;
 
-    List<ActionEntity.ResultBean> resultData = new ArrayList<>();
+    List<ResultBean> resultData = new ArrayList<>();
 
     @Override
     protected void initViews() {
@@ -51,7 +52,7 @@ public class ActionsActivity extends BaseActivity {
         API.getMainAPI().getActList(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ActionEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
                     @Override
                     public void onCompleted() {
                         adapter.notifyDataSetChanged();
@@ -63,8 +64,8 @@ public class ActionsActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(ActionEntity actionEntity) {
-                        resultData = actionEntity.getResult();
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
                 });
 

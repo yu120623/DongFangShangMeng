@@ -1,18 +1,15 @@
 package com.szdfc.dfsm.exhibition;
 
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.baseandroid.activity.BaseActivity;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.http.API;
-import com.szdfc.entitylib.ExhibitionEntity;
+import com.szdfc.entitylib.ResultBean;
+import com.szdfc.entitylib.ResultListEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +30,7 @@ public class ExhibitionActivity extends BaseActivity {
 
     ExhibitionAdapter adapter;
 
-    private List<ExhibitionEntity.ResultBean> resultData = new ArrayList<>();
+    private List<ResultBean> resultData = new ArrayList<>();
 
     @Override
     protected void initViews() {
@@ -50,7 +47,7 @@ public class ExhibitionActivity extends BaseActivity {
         API.getMainAPI().getExhibition(0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ExhibitionEntity>() {
+                .subscribe(new Subscriber<ResultListEntity>() {
                     @Override
                     public void onCompleted() {
                         adapter.notifyDataSetChanged();
@@ -62,9 +59,11 @@ public class ExhibitionActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(ExhibitionEntity exhibitionEntity) {
-                        resultData = exhibitionEntity.getResult();
+                    public void onNext(ResultListEntity resultListEntity) {
+                        resultData = resultListEntity.getResult();
                     }
+
+
                 });
 
     }
@@ -80,7 +79,7 @@ public class ExhibitionActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(ExhibitionViewHolder holder, int position) {
-            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.bg);
+//            ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.bg);
            // holder.title.setText(resultData.get(position).getEtitle());
         }
 
@@ -92,8 +91,8 @@ public class ExhibitionActivity extends BaseActivity {
     }
 
     class ExhibitionViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.exhibition_bg)
-        ImageView bg;
+//        @Bind(R.id.exhibition_bg)
+//        ImageView bg;
 
 //        @Bind(R.id.exhibition_title)
 //        TextView title;
