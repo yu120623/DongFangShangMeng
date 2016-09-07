@@ -1,5 +1,7 @@
 package com.szdfc.entitylib;
 
+import java.util.List;
+
 /**
  * Created by HGo on 2016/8/23.
  */
@@ -649,5 +651,63 @@ public class ResultBean {
 
     public void setEendTime(long eendTime) {
         this.eendTime = eendTime;
+    }
+
+    //商务中心详情
+    private List<ResourceEntity> resourceEntities;
+
+    public List<ResourceEntity> getResourceEntities() {
+        return resourceEntities;
+    }
+
+    public void setResourceEntities(List<ResourceEntity> resourceEntities) {
+        this.resourceEntities = resourceEntities;
+    }
+
+    //预定时间列表
+    private String timeSlot;
+    private long btime;
+    private String bisSelected;
+    private String bselectUser;
+    private int bpid;
+
+    public String getTimeSlot() {
+        return timeSlot;
+    }
+
+    public void setTimeSlot(String timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+
+    public long getBtime() {
+        return btime;
+    }
+
+    public void setBtime(long btime) {
+        this.btime = btime;
+    }
+
+    public String getBisSelected() {
+        return bisSelected;
+    }
+
+    public void setBisSelected(String bisSelected) {
+        this.bisSelected = bisSelected;
+    }
+
+    public String getBselectUser() {
+        return bselectUser;
+    }
+
+    public void setBselectUser(String bselectUser) {
+        this.bselectUser = bselectUser;
+    }
+
+    public int getBpid() {
+        return bpid;
+    }
+
+    public void setBpid(int bpid) {
+        this.bpid = bpid;
     }
 }
