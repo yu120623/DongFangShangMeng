@@ -31,7 +31,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:buttonImg="@drawable/exh_btn"
-            app:buttonText="展会"
+            app:buttonText="商家"
+            app:buttonTextColor="@color/bottom_btn_color" />
+
+        <com.baseandroid.view.BottomButton
+            android:id="@+id/news_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:buttonImg="@drawable/exh_btn"
+            app:buttonText="新闻"
             app:buttonTextColor="@color/bottom_btn_color" />
 
         <com.baseandroid.view.BottomButton

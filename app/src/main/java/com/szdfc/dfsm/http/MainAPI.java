@@ -4,6 +4,7 @@ import com.szdfc.entitylib.ActionDetailEntity;
 import com.szdfc.entitylib.BussinessSchoolDetailEntity;
 import com.szdfc.entitylib.ExhDetailEntity;
 import com.szdfc.entitylib.NewsDetailEntity;
+import com.szdfc.entitylib.NewsListEntitiy;
 import com.szdfc.entitylib.ResultEntity;
 import com.szdfc.entitylib.ResultListEntity;
 import com.szdfc.entitylib.StudyTourDetailEntity;
@@ -36,7 +37,7 @@ public interface MainAPI {
 
     //新闻
     @GET("api/newsList")
-    Observable<ResultListEntity> getNewsList(@Query("pagerNumber") int pagerNumber);
+    Observable<NewsListEntitiy> getNewsList(@Query("pagerNumber") int pagerNumber);
 
     //游学
     @GET("api/studyTourList")

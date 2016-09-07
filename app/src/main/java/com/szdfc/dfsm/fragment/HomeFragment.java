@@ -24,11 +24,10 @@ import com.szdfc.dfsm.businesscentre.BusinessCentreActivity;
 import com.szdfc.dfsm.businessschool.BusinessSchoolActivity;
 import com.szdfc.dfsm.competition.CompetitionActivity;
 import com.szdfc.dfsm.fashioncentre.FashionCentreActivity;
-import com.szdfc.dfsm.studytour.StudyTourActivity;
-import com.szdfc.dfsm.thinktank.ThinkTankActivity;
 import com.szdfc.dfsm.food.activity.FoodListActivity;
 import com.szdfc.dfsm.gps.NaviActivity;
-import com.szdfc.dfsm.news.NewsActivity;
+import com.szdfc.dfsm.studytour.StudyTourActivity;
+import com.szdfc.dfsm.thinktank.ThinkTankActivity;
 import com.szdfc.dfsm.thirdparty.ThirdPartyActivity;
 import com.szdfc.dfsm.tourism.activity.TourismActivity;
 import com.szdfc.dfsm.travel.TravelActivity;
@@ -246,7 +245,7 @@ public class HomeFragment extends BaseFragment {
                     intent = new Intent(context, BusinessCentreActivity.class);
                     break;
                 case 12:
-                    intent = new Intent(context, NewsActivity.class);
+                    //intent = new Intent(context, OldNewsActivity.class);
                     break;
                 case 13:
                     intent = new Intent(context, ThirdPartyActivity.class);

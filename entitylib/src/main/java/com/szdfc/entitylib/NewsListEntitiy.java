@@ -3,9 +3,9 @@ package com.szdfc.entitylib;
 import java.util.List;
 
 /**
- * Created by HGo on 2016/8/12.
+ * Created by FreeMason on 2016/9/7.
  */
-public class NewsEntity {
+public class NewsListEntitiy {
 
     /**
      * resulecode : 10000

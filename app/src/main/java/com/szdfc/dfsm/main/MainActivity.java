@@ -12,6 +12,7 @@ import com.szdfc.dfsm.fragment.ExhibitionFragment;
 import com.szdfc.dfsm.fragment.HomeFragment;
 import com.szdfc.dfsm.fragment.MeFragment;
 import com.szdfc.dfsm.fragment.NewHomeFragment;
+import com.szdfc.dfsm.news.NewsFragment;
 
 import butterknife.Bind;
 
@@ -24,6 +25,10 @@ public class MainActivity extends BaseActivity {
 
     @Bind(R.id.exhibition_btn)
     BottomButton exhibitionBtn;
+
+
+    @Bind(R.id.news_btn)
+    BottomButton newsBtn;
 
     @Bind(R.id.me_btn)
     BottomButton meBtn;
@@ -52,11 +57,18 @@ public class MainActivity extends BaseActivity {
                 viewPager.setCurrentItem(1);
             }
         });
-        meBtn.setOnClickListener(new View.OnClickListener() {
+        newsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeBtn(2);
                 viewPager.setCurrentItem(2);
+            }
+        });
+        meBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeBtn(3);
+                viewPager.setCurrentItem(3);
             }
         });
     }
@@ -68,18 +80,28 @@ public class MainActivity extends BaseActivity {
                 homeBtn.setChecked(true);
                 exhibitionBtn.setChecked(false);
                 meBtn.setChecked(false);
+                newsBtn.setChecked(false);
                 getSupportActionBar().hide();
                 break;
             case 1:
                 exhibitionBtn.setChecked(true);
                 homeBtn.setChecked(false);
                 meBtn.setChecked(false);
+                newsBtn.setChecked(false);
                 getSupportActionBar().hide();
                 break;
             case 2:
+                exhibitionBtn.setChecked(false);
+                homeBtn.setChecked(false);
+                meBtn.setChecked(false);
+                newsBtn.setChecked(true);
+                getSupportActionBar().hide();
+                break;
+            case 3:
                 meBtn.setChecked(true);
                 homeBtn.setChecked(false);
                 exhibitionBtn.setChecked(false);
+                newsBtn.setChecked(false);
                 getSupportActionBar().hide();
                 break;
         }
@@ -91,6 +113,7 @@ public class MainActivity extends BaseActivity {
                 getFragmentManager(), FragmentPagerItems.with(this)
                 .add("", NewHomeFragment.class)
                 .add("", ExhibitionFragment.class)
+                .add("", NewsFragment.class)
                 .add("", MeFragment.class)
                 .create());
         viewPager.setAdapter(adapter);
