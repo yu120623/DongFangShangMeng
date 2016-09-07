@@ -42,7 +42,6 @@ public class API {
             mainAPI = retrofit.create(MainAPI.class);
         }
         return mainAPI;
-
     }
 
     public static JuHeAPI juHeWeatherAPI(){

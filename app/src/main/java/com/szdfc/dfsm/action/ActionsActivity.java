@@ -32,7 +32,6 @@ import rx.schedulers.Schedulers;
 public class ActionsActivity extends BaseActivity {
     @Bind(R.id.act_list)
     RecyclerView recyclerView;
-
     ActionAdapter adapter;
 
     List<ResultBean> resultData = new ArrayList<>();

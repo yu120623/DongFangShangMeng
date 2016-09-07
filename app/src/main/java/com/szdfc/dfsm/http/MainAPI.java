@@ -4,6 +4,7 @@ import com.szdfc.entitylib.ActionDetailEntity;
 import com.szdfc.entitylib.BussinessSchoolDetailEntity;
 import com.szdfc.entitylib.ExhDetailEntity;
 import com.szdfc.entitylib.NewsDetailEntity;
+import com.szdfc.entitylib.ResultEntity;
 import com.szdfc.entitylib.ResultListEntity;
 import com.szdfc.entitylib.StudyTourDetailEntity;
 import com.szdfc.entitylib.ThinkDetailEntity;
@@ -64,6 +65,7 @@ public interface MainAPI {
     //创业大赛
     @GET("api/entrepreneurshipCompetitionList")
     Observable<ResultListEntity> getCompetitionList(@Query("pagerNumber") int pagerNumber);
+
     //游学详细
     @GET("api/studyTourFindOne")
     Observable<StudyTourDetailEntity> studyTourFindOne(@Query("sId") String id);
@@ -83,4 +85,13 @@ public interface MainAPI {
     //商学院详细
     @GET("api/businessSchoolFindOne")
     Observable<BussinessSchoolDetailEntity> businessSchoolFindOne(@Query("bId") String id);
+
+    //商务中心详情
+    @GET("api/businessCentreFindOne")
+    Observable<ResultEntity> businessCentreFindOne(@Query("bId") String bId);
+
+    //预定时间列表
+    @GET("api/businessCentreOrderByDate")
+    Observable<ResultListEntity> businessCentreOrderByDate(@Query("date") String date,@Query("bId") String bId);
+
 }

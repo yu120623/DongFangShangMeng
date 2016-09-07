@@ -1,5 +1,6 @@
 package com.szdfc.dfsm.businesscentre;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.baseandroid.activity.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.szdfc.dfsm.R;
+import com.szdfc.dfsm.businessschool.BusinessSchoolDetailActivity;
 import com.szdfc.dfsm.http.API;
 import com.szdfc.entitylib.ResultBean;
 import com.szdfc.entitylib.ResultListEntity;
@@ -73,6 +75,15 @@ public class BusinessCentreActivity extends BaseActivity {
         @Override
         public BusinessCentreViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = inflater.inflate(R.layout.item_business_centre, parent, false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, BusinessCentreDetailActivity.class);
+                    intent.putExtra("bid",(String) view.getTag());
+                    startActivity(intent);
+                }
+            });
+
             return new BusinessCentreViewHolder(view);
         }
 
@@ -80,12 +91,13 @@ public class BusinessCentreActivity extends BaseActivity {
         public void onBindViewHolder(BusinessCentreViewHolder holder, int position) {
             ImageLoader.getInstance().displayImage(resultData.get(position).getResourceEntity().getResourceLocation(), holder.img);
             holder.title.setText(resultData.get(position).getBtitle());
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
+            holder.itemView.setTag(resultData.get(position).getBid()+"");
+//            holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                }
+//            });
         }
 
         @Override

@@ -10,6 +10,8 @@ import com.ogaclejapan.smarttablayout.utils.v13.FragmentPagerItems;
 import com.szdfc.dfsm.R;
 import com.szdfc.dfsm.fragment.ExhibitionFragment;
 import com.szdfc.dfsm.fragment.HomeFragment;
+import com.szdfc.dfsm.fragment.MeFragment;
+import com.szdfc.dfsm.fragment.NewHomeFragment;
 
 import butterknife.Bind;
 
@@ -22,6 +24,10 @@ public class MainActivity extends BaseActivity {
 
     @Bind(R.id.exhibition_btn)
     BottomButton exhibitionBtn;
+
+    @Bind(R.id.me_btn)
+    BottomButton meBtn;
+
 
     @Override
     protected void initViews() {
@@ -46,6 +52,13 @@ public class MainActivity extends BaseActivity {
                 viewPager.setCurrentItem(1);
             }
         });
+        meBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeBtn(2);
+                viewPager.setCurrentItem(2);
+            }
+        });
     }
 
     //切换底部按钮
@@ -54,11 +67,19 @@ public class MainActivity extends BaseActivity {
             case 0:
                 homeBtn.setChecked(true);
                 exhibitionBtn.setChecked(false);
+                meBtn.setChecked(false);
                 getSupportActionBar().hide();
                 break;
             case 1:
                 exhibitionBtn.setChecked(true);
                 homeBtn.setChecked(false);
+                meBtn.setChecked(false);
+                getSupportActionBar().hide();
+                break;
+            case 2:
+                meBtn.setChecked(true);
+                homeBtn.setChecked(false);
+                exhibitionBtn.setChecked(false);
                 getSupportActionBar().hide();
                 break;
         }
@@ -68,8 +89,9 @@ public class MainActivity extends BaseActivity {
     private void initFragment() {
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getFragmentManager(), FragmentPagerItems.with(this)
-                .add("", HomeFragment.class)
+                .add("", NewHomeFragment.class)
                 .add("", ExhibitionFragment.class)
+                .add("", MeFragment.class)
                 .create());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

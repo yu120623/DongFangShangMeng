@@ -64,11 +64,21 @@
         <activity android:name=".thirdparty.ThirdPartyActivity" />
         <activity android:name=".businesscentre.BusinessCentreActivity" />
         <activity android:name=".fashioncentre.FashionCentreActivity" />
-        <activity android:name=".competition.CompetitionActivity"/>
-        <activity android:name=".studytour.StudyTourDetailActivity" android:screenOrientation="portrait" />
-        <activity android:name=".news.NewsDetailActivity" android:screenOrientation="portrait" />
-        <activity android:name=".action.ActionsDetailActivity" android:screenOrientation="portrait" />
-        <activity android:name=".businessschool.BusinessSchoolDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name=".competition.CompetitionActivity" />
+        <activity android:name=".businesscentre.BusinessCentreDetailActivity" />
+        <activity android:name=".businesscentre.BusinessCentreOrderActivity" />
+        <activity
+            android:name=".studytour.StudyTourDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".news.NewsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".action.ActionsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".businessschool.BusinessSchoolDetailActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".travel.TrainStationActivity"
             android:windowSoftInputMode="adjustPan" />
